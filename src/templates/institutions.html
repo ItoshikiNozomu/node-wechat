@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>匹配的留学机构</title>
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+    .insBox {
+        border: 1px solid black;
+        margin-bottom: 10px;
+        padding: 5px;
+        border-radius: 5px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="">
+        <div class="col-md-12">
+            <h2>适合您的留学机构</h2>
+            <ul class="list-unstyled">
+                <?php 
+                //print_r($institutions); 
+                //echo $institutions[0][ "title"]; 
+                for($i=0;$i<count($institutions);$i++){ ?>
+                <li>
+                    <div class="insBox">
+                        <p><strong><?php echo $institutions[$i]["title"];?>:</strong></p>
+                        <p>
+                            <?php echo $institutions[$i][ "desc"];?>
+                        </p>
+                        <p><a href="./directors.php?openid=<?php echo $_GET['openid'];?>&type=list#<?php echo $institutions[$i]['directorName'];?>"><small>点此联系</small>&nbsp<strong><?php echo $institutions[$i]["directortitle"].'&nbsp&nbsp'.$institutions[$i]["directorName"];?></strong></a></p>
+                    </div>
+                </li>
+                <?php } ?>
+            </ul>
+        </div>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

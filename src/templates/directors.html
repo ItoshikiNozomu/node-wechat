@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>联系名师</title>
+    <%- include ./include/headInc.html %>
+    <style>
+    .insBox {
+        border: 1px solid black;
+        margin-bottom: 10px;
+        padding: 5px;
+        border-radius: 5px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="">
+        <div class="col-md-12">
+            <h2>出色的指导老师</h2>
+            <ul class="list-unstyled">
+                <%for(var i = 0;i<directors.length;i++){%>
+                    <div class="insBox">
+                        <p><small><%= directors[i]["ins_name"]+"  "+directors[i]["title"]+"  "%></small><strong><%=  directors[i]["name"]%>:</strong></p>
+                        <p>
+                            <%=directors[i][ "desc"]%>
+                        </p>
+                        <p><a href="#" class="J_contact">点此联系：<%= ' '+directors[i]["name"]%></a></p>
+                    </div>
+                <%}%>
+                
+            </ul>
+        </div>
+        <div class="modal fade J_modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">请输入您的个人信息，以方便老师联系</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <input type="tel" class="form-control" id="mobile" placeholder="请输入您的手机号码" name="uTel">
+                            <br>
+                            <input class="form-control" placeholder="请输入您的姓名" name="name" id="name">
+                            <input type="hidden" class="J_openid" value="<%=openid%>" id="openid">
+                        </div>
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary J_confirm">确定</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+    </div>
+    <%- include ./include/scriptsInc.html %>
+    <script type="text/javascript" src="../scripts/director.js"></script>
+</body>
+
+</html>

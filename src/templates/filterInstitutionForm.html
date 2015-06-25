@@ -1,0 +1,206 @@
+<!doctype html>
+<html>
+  
+  <head>
+    <title>选择合适的机构</title>
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      label{
+          width: 80px;
+        }
+       label[for=note]{
+         vertical-align: top;
+       }
+       label.s{
+         
+         width: 45px;
+       }
+       
+       .formBox{
+         margin: 20px;
+       }
+       small{
+         color: red;
+       }
+       .ml{
+         margin-left: 15px;
+       }
+       select{
+        width: 120px;
+       }
+    </style>
+  </head>
+  
+  <body>
+    
+    <div class="">
+      <div class="col-md-12 mForm">
+        <div class="formBox">
+          <h4 class="formTitle">填写您的留学申请相关信息</h4>
+          <small>资料越详细匹配建议越准确 &nbsp&nbsp带红色星号为必填项</small>
+          <form action="./institutions.php?type=filter&" method="post">
+            <div class="form-group">
+              <label for="degree">目前学历</label>
+              <select name="degree" id="degree">
+                <option></option>
+                <option value="初中">初中</option>
+                <option value="高中">高中</option>
+                <option value="本科">本科</option>
+                <option value="研究生">研究生</option>
+              </select>
+              <!-- <input type="text" id="background" name="background">-->
+            </div>
+            <div class="form-group">
+              <label for="location">所在地<span style="color:red">*</span></label></label></label>
+              <select name="location" id="location" required>
+                <option></option>
+                <option value="北京">北京及附近城市</option>
+                <option value="上海">上海及附近城市</option>
+                <option value="广州">广州</option>
+                <option value="深圳">深圳</option>
+                <option value="其他">其他</option>
+              </select>
+              <!-- <input type="text" id="background" name="background">-->
+            </div>
+            <div class="form-group">
+              <label for="average">学业平均分</label>
+              <select name="average" id="average">
+                <option></option>
+                <option value="a">95分以上</option>
+                <option value="b">85-95分</option>
+                <option value="c">70-85分</option>
+                <option value="d">70分以下</option>
+              </select>
+              <!-- <input type="text" id="background" name="background">-->
+            </div>
+            <div class="form-group J_lang">
+              <p><small>语言成绩，没分数请留空白</small></p>
+              <label for="TOFEL" class="">TOFEL</label>
+              <select  id="TOFEL">
+                <option></option>
+                <option value="a">105以上</option>
+                <option value="b">95-105</option>
+                <option value="c">85-95</option>
+                <option value="d">75-85</option>
+                <option value="e">75以下</option>
+              </select>
+              <br>
+              <label for="IELTS" class=" ">IELTS</label>
+              <select id="IELTS">
+                <option></option>
+                <option value="a">7.0-8.0</option>
+                <option value="b">6.5-7.0</option>
+                <option value="c">6.0及以下</option>
+              </select>
+              <!-- <input type="text" id="background" name="background">-->
+            </div>
+            <div class="form-group J_examRank" style="border-top:1px dotted red">
+              <p><small>（以下针对本科、高中申请）</small></p>
+              <p>
+                <label for="SAT" class="">SAT</label>
+                <select  id="SAT">
+                  <option></option>
+                  <option value="a">2200-2400</option>
+                  <option value="b">1850-2200</option>
+                  <option value="c">1600-1850</option>
+                </select> <br>
+                <label for="AP" class="">AP</label>
+                <select  id="AP">
+                  <option></option>
+                  <option value="a">5</option>
+                  <option value="b">4</option>
+                  <option value="c">3</option>
+                </select>
+              </p>
+              <p>
+                <label for="ACT" class=" ">ACT</label>
+                <select  id="ACT">
+                  <option></option>
+                  <option value="a">32分以上</option>
+                  <option value="b">26-32分</option>
+                  <option value="c">23-26分</option>
+                  <option value="d">23分以下</option>
+                  </select>
+                <br>
+                <label for="SSAT" class=" ">SSAT</label>
+                <select  id="SSAT">
+                  <option></option>
+                  <option value="a">低阶1850以下</option>
+                  <option value="b">低阶1850以上</option>
+                  <option value="c">高阶2000以下</option>
+                  <option value="d">高阶2000以上</option>
+                </select>
+                  <!-- <input type="text" id="background" name="background">-->
+              </p>
+            </div>
+            <div class="form-group J_examRank" style="border-top:1px dotted red;border-bottom:1px dotted red">
+              <p><small>（以下针对硕士申请，若申本科请留白）</small></p>
+              <p>
+                <label for="GMAT" class="">GMAT</label>
+                <select  id="GMAT">
+                  <option></option>
+                  <option value="a">720以上</option>
+                  <option value="b">630-720</option>
+                  <option value="c">530-630</option>
+                  <option value="d">550以下</option>
+                </select>
+                <br>
+                <label for="GRE" class=" " >GRE</label>
+                <select  id="GRE">
+                  <option></option>
+                  <option value="a">7.0-8.0</option>
+                  <option value="b">6.5-7.0</option>
+                  <option value="c">6.0及以下</option>
+                </select>
+                <br>
+                 （Verbal + Quantitative）
+              </p>
+              <p>
+                <label for="LSAT" class="">LSAT</label>
+                <select  id="LSAT">
+                  <option></option>
+                  <option value="a">163以上</option>
+                  <option value="b">151-162</option>
+                  <option value="c">151以下</option>
+                </select>
+                  	
+              </p>
+            </div>
+            
+            <div class="form-group">
+              <label for="major">申请方向</label>
+              <select name="major" id="major">
+                <option></option>
+                <option value="商科">商科</option>
+                <option value="社科">社科</option>
+                <option value="工科、理科">工科、理科</option>
+                <option value="艺术类">艺术类</option>
+                <option value="未定">未定</option>
+              </select>
+            </div>
+          
+            <div class="form-group">
+              <label for="material">其它材料</label>
+              <select name="material" id="material">
+                <option></option>
+                <option value="准备充足，条件优秀">准备充足，条件优秀</option>
+                <option value="一般般、计划进行中">一般般、计划进行中</option>
+                <option value="仓促而空白">仓促而空白</option>
+              </select><br>（论文或实践等）
+            </div>
+             <input type="hidden" name="lang" id="J_langVal">
+             <input type="hidden" name="exam_rank" id="J_examRankVal">
+             <input type="hidden" name="openid" value="<?php echo $token['openid'];?>">
+            <button  class="btn btn-primary btn-lg btn-block J_btnSubmit" style="margin:auto">提交</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="../scripts/filterInsForm.js"></script>
+  </body>
+
+</html>
