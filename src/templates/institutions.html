@@ -3,9 +3,7 @@
 
 <head>
     <title>匹配的留学机构</title>
-    <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta charset="utf-8">
+    <%- include ./include/headInc.html %>
     <style>
     .insBox {
         border: 1px solid black;
@@ -17,24 +15,24 @@
 </head>
 
 <body>
+    
     <div class="">
         <div class="col-md-12">
             <h2>适合您的留学机构</h2>
             <ul class="list-unstyled">
-                <?php 
-                //print_r($institutions); 
-                //echo $institutions[0][ "title"]; 
-                for($i=0;$i<count($institutions);$i++){ ?>
+                <%
+                
+                for(var i=0;i<institutions.length;i++){ %>
                 <li>
                     <div class="insBox">
-                        <p><strong><?php echo $institutions[$i]["title"];?>:</strong></p>
+                        <p><strong><%=  institutions[i]["name"]%>:</strong></p>
                         <p>
-                            <?php echo $institutions[$i][ "desc"];?>
+                            <%=institutions[i][ "desc"]%>
                         </p>
-                        <p><a href="./directors.php?openid=<?php echo $_GET['openid'];?>&type=list#<?php echo $institutions[$i]['directorName'];?>"><small>点此联系</small>&nbsp<strong><?php echo $institutions[$i]["directortitle"].'&nbsp&nbsp'.$institutions[$i]["directorName"];?></strong></a></p>
+                        <p><a href="/node/w/director/-?openid=<%=openid%>&type=list#<%=institutions[i]['director_name']%>"><small>点此联系</small>&nbsp<strong><%=institutions[i]["director_title"]+'  '+institutions[i]["director_name"]%></strong></a></p>
                     </div>
                 </li>
-                <?php } ?>
+                <% } %>
             </ul>
         </div>
     </div>

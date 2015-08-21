@@ -20,13 +20,15 @@
             <h2>出色的指导老师</h2>
             <ul class="list-unstyled">
                 <%for(var i = 0;i<directors.length;i++){%>
-                    <div class="insBox">
-                        <p><small><%= directors[i]["ins_name"]+"  "+directors[i]["title"]+"  "%></small><strong><%=  directors[i]["name"]%>:</strong></p>
-                        <p>
-                            <%=directors[i][ "desc"]%>
-                        </p>
-                        <p><a href="#" class="J_contact">点此联系：<%= ' '+directors[i]["name"]%></a></p>
-                    </div>
+                    <li id="<%=directors[i].name%>">
+                        <div class="insBox">
+                            <p><small><%= directors[i]["ins_name"]+"  "+directors[i]["title"]+"  "%></small><strong><%=  directors[i]["name"]%>:</strong></p>
+                            <p>
+                                <%=directors[i][ "desc"]%>
+                            </p>
+                            <p><a href="#" class="J_contact">点此联系：<%= ' '+directors[i]["name"]%></a></p>
+                        </div>
+                    <li>
                 <%}%>
                 
             </ul>

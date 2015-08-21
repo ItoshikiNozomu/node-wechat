@@ -7,7 +7,7 @@ var dbConf = require('./conf/db.json')
 var wUtils = require('./src/wechatUtils')
 var bodyParser = require('body-parser')
 var Busboy = require('busboy')
-
+var React = require('react')
 
 var textBodyParser = bodyParser.text({limit:1024*1000*100})
 var rawParser = bodyParser.raw({limit:1024*1000*100})
@@ -25,11 +25,11 @@ var knex = require('knex')({
     }
 })
 
-app.set('views', 'src/templates')
+app.set('views', ['src/templates','src/react'])
 app.engine('html', engines.ejs)
-app.engine('react', engines.react)
+app.engine('jsx', engines.react)
 app.use('/w', w)
-
+require('node-jsx').install()
 
 // app.use (function(req, res, next) {
 //     var data=''
@@ -59,8 +59,27 @@ function decodeBase64Image(dataString) {
   return response;
 }
 
-app.get('/', function(req, res) {
-    res.send('Hello World')
+var comp = require('./src/react/index.jsx')
+
+app.get('/index', function (req, res) {
+    var pageObj = { 
+        name: 'eee',
+        title:'welcome',
+        scripts:[/*'a.js','b.js'*/] ,
+        mainNavLinks:[
+            {name:'link1',href:'../link1'}
+        ],
+        styleSheets:['a.css'],
+        options:[{value:'a',displayName:'a'},{value:2,displayName:'b'}]
+        }
+    res.send(React.renderToString(React.createElement(comp,pageObj)))
+  // res.render('index.jsx', { name: 'John' })
+  /*
+    app.render('index.jsx', pageObj, 
+        function (err, html) { 
+        console.log(html)
+        res.send(html) })
+        */
 })
 
 w.get('/director/:id', function(req, res) {
@@ -74,13 +93,13 @@ w.get('/director/:id', function(req, res) {
     if (req.params.id != '-') {
         //todo 
     }
-    Promise.all(tasks).then(function(rows, tokenObj) {
+    Promise.all(tasks).then(function(v) {
         //console.log(tokenObj)
         //console.log(rows[0])
         app.render('directors.html', {
         	//why array here?
-            directors: rows[0],
-            openid: tokenObj ? tokenObj.openid : ''
+            directors: v[0],
+            openid: v[1] ? v[1].openid : ''
         }, function(err, html) {
             if (err) throw err
                 //console.log(html)
@@ -108,10 +127,11 @@ w.get('/institution/:loc/:id', function(req, res) {
     if (req.query.code) {
         tasks.push(wUtils.getUserAccessTokenObj())
     }
-    Promise.all(tasks).then(function(rows, tokenObj) {
+    Promise.all(tasks).then(function(v) {
+        //console.log(arguments)
         app.render('institutions.html', {
-            institutions: rows,
-            openid: tokenObj ? tokenObj.openid : ''
+            institutions: v[0],
+            openid: v[1] ?v[1].openid : ''
         }, function(err, html) {
             if (err) throw err
 
@@ -122,6 +142,10 @@ w.get('/institution/:loc/:id', function(req, res) {
 
 })
 
+w.get('/code',function(){})
+
+//w.get('')
+//test code below
 app.get('/test/:loc/:id', function(req, res) {
 
     console.log(req.params.loc)
@@ -143,7 +167,7 @@ app.post('/img', function (req, res) {
     //console.log(12345)
     var bb = new Busboy({ headers: req.headers })
     var _d =[]
-   console.log(req.headers)
+   
     bb.on('file', function (fieldName, file, fileName, encoding, mimeType) {
         //console.log(arguments)
         file.on('data', function (data) {

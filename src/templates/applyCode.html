@@ -1,0 +1,50 @@
+<?php ?>
+<!doctype html>
+<html>
+
+<head>
+    <title>获取优惠码</title>
+    <%- include ./include/commHead.html %>
+    <style>
+    .mForm {
+        margin-top: 30px;
+    }
+    
+    .inputBox {
+        margin-bottom: 20px;
+        font-size: 16px;
+    }
+    
+    .inputBox input {
+        height: 40px;
+    }
+    
+    .formTitle {
+        font-size: 20px;
+        text-align: center;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="">
+        <div class="col-md-12 mForm">
+            <h4 class="formTitle">填写个人信息，获取优惠</h4>
+            <form enctype="application/x-www-form-urlencoded" method="post" action="code.php">
+                <div class="form-group inputBox">
+                    <input type="tel" class="form-control" id="uMobile" placeholder="请输入您的手机号码" name="mobile">
+                    <br>
+                    <input class="form-control" placeholder="请输入您的姓名" name="name">
+                    <input type="hidden" name="openid" value="<%=openid%>">
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg btn-block" style="margin:auto">立刻获取优惠码</button>
+            </form>
+            <p style="margin-top:20px"><small style="">目前适用机构：天道教育、常青汇教育、启德留学、新通教育、哈鲁留学、学美留学、啄木鸟留学、嘉卓留学、汇智英达、燕定美中留学、佳桥留学、瑞知教育、毕达留学、申博留学、沃尔德留学、琥珀教育、威久留学、澳际留学、IDP、太傻留学、金吉列留学、嘉华世达留学、环球雅思、朗阁教育……下周会有更多。
+            <br><br>
+            至少可获得9折，参选机构的优先关注培育项目。具体优惠规则机构有最终解释权。</small></p>
+        </div>
+    </div>
+    <%- include ./include/commScripts.html %>
+</body>
+
+</html>
